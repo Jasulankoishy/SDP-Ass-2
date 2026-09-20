@@ -1,4 +1,4 @@
-Verification evidence - compiled with javac 21 --release 17; executed on Java 21
+Verification evidence - compiled and executed with Eclipse Temurin JDK 17.0.20.1
 
 1 ROAD + WINDOWS
 Input: ROAD WINDOWS

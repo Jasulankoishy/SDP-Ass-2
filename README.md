@@ -42,6 +42,8 @@ Truck delivers laboratory equipment by road to Aktau warehouse
 
 Run `ROAD WINDOWS`, `SEA WINDOWS`, `ROAD MACOS`, and `SEA MACOS`. Also run `AIR WINDOWS`, `ROAD LINUX`, and a command with no choices. The actual results are recorded in `docs/verification.txt`.
 
+The README build command and all seven checks were verified with Eclipse Temurin JDK 17.0.20.1.
+
 ## Submitted version
 
 The exact submitted commit is listed in the accompanying PDF report. Run `git rev-parse HEAD` to check the current checkout.
