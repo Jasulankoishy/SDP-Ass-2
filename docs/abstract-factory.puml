@@ -1,0 +1,36 @@
+@startuml
+title Abstract Factory - matching UI families
+skinparam classAttributeIconSize 0
+
+interface Button <<Abstract Product>> {
+  +paint(): void
+}
+interface Checkbox <<Abstract Product>> {
+  +paint(): void
+}
+class WindowsButton <<Concrete Product>>
+class WindowsCheckbox <<Concrete Product>>
+class MacOSButton <<Concrete Product>>
+class MacOSCheckbox <<Concrete Product>>
+interface GUIFactory <<Abstract Factory>> {
+  +createButton(): Button
+  +createCheckbox(): Checkbox
+}
+class WindowsFactory <<Concrete Factory>>
+class MacOSFactory <<Concrete Factory>>
+class DeliveryApplication <<Client>>
+
+WindowsButton ..|> Button
+MacOSButton ..|> Button
+WindowsCheckbox ..|> Checkbox
+MacOSCheckbox ..|> Checkbox
+WindowsFactory ..|> GUIFactory
+MacOSFactory ..|> GUIFactory
+WindowsFactory ..> WindowsButton : creates
+WindowsFactory ..> WindowsCheckbox : creates
+MacOSFactory ..> MacOSButton : creates
+MacOSFactory ..> MacOSCheckbox : creates
+DeliveryApplication --> GUIFactory : constructor dependency
+DeliveryApplication --> Button : paint()
+DeliveryApplication --> Checkbox : paint()
+@enduml

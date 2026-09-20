@@ -1,0 +1,60 @@
+Verification evidence - compiled with javac 21 --release 17; executed on Java 21
+
+1 ROAD + WINDOWS
+Input: ROAD WINDOWS
+Actual result:
+Delivery mode: ROAD
+UI platform: WINDOWS
+Rendering Windows button
+Rendering Windows checkbox
+Truck delivers laboratory equipment by road to Aktau warehouse
+Status: PASS
+
+2 SEA + WINDOWS
+Input: SEA WINDOWS
+Actual result:
+Delivery mode: SEA
+UI platform: WINDOWS
+Rendering Windows button
+Rendering Windows checkbox
+Ship delivers laboratory equipment by sea to Aktau warehouse
+Status: PASS
+
+3 ROAD + MACOS
+Input: ROAD MACOS
+Actual result:
+Delivery mode: ROAD
+UI platform: MACOS
+Rendering macOS button
+Rendering macOS checkbox
+Truck delivers laboratory equipment by road to Aktau warehouse
+Status: PASS
+
+4 SEA + MACOS
+Input: SEA MACOS
+Actual result:
+Delivery mode: SEA
+UI platform: MACOS
+Rendering macOS button
+Rendering macOS checkbox
+Ship delivers laboratory equipment by sea to Aktau warehouse
+Status: PASS
+
+5 Invalid delivery mode
+Input: AIR WINDOWS
+Actual result:
+Unsupported delivery mode: AIR. Use ROAD or SEA.
+Status: PASS
+
+6 Invalid platform
+Input: ROAD LINUX
+Actual result:
+Unsupported UI platform: LINUX. Use WINDOWS or MACOS.
+Status: PASS
+
+7 Missing input
+Input: 
+Actual result:
+Expected two choices: ROAD or SEA, then WINDOWS or MACOS.
+Status: PASS
+
