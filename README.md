@@ -44,6 +44,6 @@ Run `ROAD WINDOWS`, `SEA WINDOWS`, `ROAD MACOS`, and `SEA MACOS`. Also run `AIR 
 
 ## Submitted version
 
-Commit: `ADD_FINAL_COMMIT_HASH_AFTER_REVIEW`
+The exact submitted commit is listed in the accompanying PDF report. Run `git rev-parse HEAD` to check the current checkout.
 
 The repository is intended as an understandable learning example. Review every method and adapt the report to your own explanations before submitting it as individual work.
