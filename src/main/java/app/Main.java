@@ -6,47 +6,52 @@ import abstractfactory.WindowsFactory;
 import factorymethod.Logistics;
 import factorymethod.RoadLogistics;
 import factorymethod.SeaLogistics;
-import java.util.Locale;
 
 public class Main {
-    private static final String CARGO = "laboratory equipment";
-    private static final String DESTINATION = "Aktau warehouse";
 
     public static void main(String[] args) {
+
         if (args.length != 2) {
-            System.err.println("Expected two choices: ROAD or SEA, then WINDOWS or MACOS.");
+            System.out.println(
+                "Enter delivery mode and platform: ROAD WINDOWS"
+            );
             return;
         }
 
-        String deliveryMode = args[0].toUpperCase(Locale.ROOT);
-        String platform = args[1].toUpperCase(Locale.ROOT);
+        String deliveryMode = args[0].toUpperCase();
+        String platform = args[1].toUpperCase();
 
-        try {
-            Logistics logistics = selectLogistics(deliveryMode);
-            GUIFactory guiFactory = selectGuiFactory(platform);
-            System.out.println("Delivery mode: " + deliveryMode);
-            System.out.println("UI platform: " + platform);
-            new DeliveryApplication(guiFactory, logistics).run(CARGO, DESTINATION);
-        } catch (IllegalArgumentException error) {
-            System.err.println(error.getMessage());
+        Logistics logistics;
+
+        if (deliveryMode.equals("ROAD")) {
+            logistics = new RoadLogistics();
+        } else if (deliveryMode.equals("SEA")) {
+            logistics = new SeaLogistics();
+        } else {
+            System.out.println("Use ROAD or SEA.");
+            return;
         }
-    }
 
-    private static Logistics selectLogistics(String mode) {
-        return switch (mode) {
-            case "ROAD" -> new RoadLogistics();
-            case "SEA" -> new SeaLogistics();
-            default -> throw new IllegalArgumentException(
-                "Unsupported delivery mode: " + mode + ". Use ROAD or SEA.");
-        };
-    }
+        GUIFactory guiFactory;
 
-    private static GUIFactory selectGuiFactory(String platform) {
-        return switch (platform) {
-            case "WINDOWS" -> new WindowsFactory();
-            case "MACOS" -> new MacOSFactory();
-            default -> throw new IllegalArgumentException(
-                "Unsupported UI platform: " + platform + ". Use WINDOWS or MACOS.");
-        };
+        if (platform.equals("WINDOWS")) {
+            guiFactory = new WindowsFactory();
+        } else if (platform.equals("MACOS")) {
+            guiFactory = new MacOSFactory();
+        } else {
+            System.out.println("Use WINDOWS or MACOS.");
+            return;
+        }
+
+        System.out.println("Delivery mode: " + deliveryMode);
+        System.out.println("UI platform: " + platform);
+
+        DeliveryApplication application =
+            new DeliveryApplication(guiFactory, logistics);
+
+        application.run(
+            "laboratory equipment",
+            "Aktau warehouse"
+        );
     }
 }
